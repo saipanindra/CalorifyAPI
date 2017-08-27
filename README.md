@@ -1,4 +1,5 @@
 # Calorify API
+[![Build Status](https://travis-ci.org/saipanindra/CalorifyAPI.svg?branch=master)](https://travis-ci.org/saipanindra/CalorifyAPI)
 
 ## Overview
 API that backs Calorify App.
