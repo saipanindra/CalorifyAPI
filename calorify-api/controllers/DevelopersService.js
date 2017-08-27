@@ -1,11 +1,34 @@
 'use strict';
 
+exports.getCuisines = function(args, res, next) {
+  /**
+   * get list of cuisines
+   * get list of cuisines in the system.
+   *
+   * type String pass an optional cuisine type for looking up cuisines (optional)
+   * skip Integer number of records to skip for pagination (optional)
+   * limit Integer maximum number of records to return (optional)
+   * returns List
+   **/
+  var examples = {};
+  examples['application/json'] = [ {
+  "Id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+  "Name" : "Asian"
+} ];
+  if (Object.keys(examples).length > 0) {
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(examples[Object.keys(examples)[0]] || {}, null, 2));
+  } else {
+    res.end();
+  }
+}
+
 exports.getUsers = function(args, res, next) {
   /**
    * get list of users
    * get list of users in the system.
    *
-   * searchString String pass an optional search string for looking up users (optional)
+   * username String pass an optional user name(first name or last name) string for looking up users (optional)
    * skip Integer number of records to skip for pagination (optional)
    * limit Integer maximum number of records to return (optional)
    * returns List

@@ -3,7 +3,7 @@ swagger: "2.0"
 info:
   description: "Calorify API"
   version: "1.0.0"
-  title: "Calorif API"
+  title: "Calorify API"
   contact:
     email: "saipanindra9@gmail.com"
   license:
@@ -19,6 +19,71 @@ tags:
 schemes:
 - "https"
 paths:
+  /Cuisines:
+    get:
+      tags:
+      - "developers"
+      summary: "get list of cuisines"
+      description: "get list of cuisines in the system."
+      operationId: "getCuisines"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "type"
+        in: "query"
+        description: "pass an optional cuisine type for looking up cuisines"
+        required: false
+        type: "string"
+      - name: "skip"
+        in: "query"
+        description: "number of records to skip for pagination"
+        required: false
+        type: "integer"
+        minimum: 0
+        format: "int32"
+      - name: "limit"
+        in: "query"
+        description: "maximum number of records to return"
+        required: false
+        type: "integer"
+        maximum: 50
+        minimum: 0
+        format: "int32"
+      responses:
+        200:
+          description: "search results matching criteria"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Cuisines"
+        400:
+          description: "bad input parameter"
+      x-swagger-router-controller: "Developers"
+    post:
+      tags:
+      - "admins"
+      summary: "adds cuisine to the system"
+      description: "Adds a new cuisine to the system"
+      operationId: "addCuisine"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "Cuisine"
+        description: "Cuisine object to add"
+        required: false
+        schema:
+          $ref: "#/definitions/Cuisines"
+      responses:
+        201:
+          description: "success response , cuisine added to the system"
+        400:
+          description: "invalid input, object invalid"
+        409:
+          description: "an existing item already exists"
+      x-swagger-router-controller: "Admins"
   /users:
     get:
       tags:
@@ -29,9 +94,10 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "searchString"
+      - name: "username"
         in: "query"
-        description: "pass an optional search string for looking up users"
+        description: "pass an optional user name(first name or last name) string for\
+          \ looking up users"
         required: false
         type: "string"
       - name: "skip"
@@ -211,3 +277,16 @@ definitions:
       LastName:
         type: "string"
         example: "Nolan"
+  Cuisines:
+    type: "object"
+    required:
+    - "Id"
+    - "Name"
+    properties:
+      Id:
+        type: "string"
+        format: "uuid"
+        example: "d290f1ee-6c54-4b01-90e6-d701748f0851"
+      Name:
+        type: "string"
+        example: "Asian"

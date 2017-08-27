@@ -1,5 +1,16 @@
 'use strict';
 
+exports.addCuisine = function(args, res, next) {
+  /**
+   * adds cuisine to the system
+   * Adds a new cuisine to the system
+   *
+   * cuisine Cuisines Cuisine object to add (optional)
+   * no response value expected for this operation
+   **/
+  res.end();
+}
+
 exports.addIngredient = function(args, res, next) {
   /**
    * adds an ingredient
