@@ -13,8 +13,7 @@ To run the server, navigate to `api` directory (`cd api`), then run:
 npm start
 ```
 
-To view the Swagger UI interface:
-
+To view the API Docs 
 ```
 open http://localhost:8080/docs
 ```
