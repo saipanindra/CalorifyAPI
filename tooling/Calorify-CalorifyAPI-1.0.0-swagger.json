@@ -92,7 +92,7 @@
                 }
             }
         },
-        "/users": {
+        "/Users": {
             "get": {
                 "tags": ["developers"],
                 "summary": "get list of users",

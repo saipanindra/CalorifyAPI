@@ -1,23 +1,23 @@
 {
-  "name": "calorif-api",
-  "version": "1.0.0",
-  "description": "Calorify API",
-  "main": "index.js",
-  "scripts": {
+    "name": "calorify-api",
+    "version": "1.0.0",
+    "description": "Calorify API",
+    "main": "index.js",
+    "scripts": {
     "prestart": "npm run lint ,npm run lint-fix, npm install",
     "lint": "eslint **/*.js",
     "lint-fix": "eslint --fix **/*.js",
     "start": "node index.js"
-  },
-  "keywords": [
-    "swagger"
-  ],
-  "license": "Unlicense",
-  "private": true,
-  "dependencies": {
-    "connect": "^3.2.0",
-    "js-yaml": "^3.3.0",
-    "swagger-tools": "0.10.1"
+    },
+    "keywords": [
+        "swagger"
+    ],
+    "license": "Unlicense",
+    "private": true,
+    "dependencies": {
+        "express": "^4.15.4",
+        "js-yaml": "^3.3.0",
+        "swagger-tools": "0.10.1"
   },
   "devDependencies": {
     "eslint": "^2.13.1"
@@ -25,6 +25,5 @@
   "env": {
     "browser": true,
     "node": true
-  }
+    }
 }
-
