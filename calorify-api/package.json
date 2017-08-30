@@ -4,8 +4,10 @@
     "description": "Calorify API",
     "main": "index.js",
     "scripts": {
-        "prestart": "npm install",
-        "start": "node index.js"
+    "prestart": "npm run lint ,npm run lint-fix, npm install",
+    "lint": "eslint **/*.js",
+    "lint-fix": "eslint --fix **/*.js",
+    "start": "node index.js"
     },
     "keywords": [
         "swagger"
@@ -16,5 +18,12 @@
         "express": "^4.15.4",
         "js-yaml": "^3.3.0",
         "swagger-tools": "0.10.1"
+  },
+  "devDependencies": {
+    "eslint": "^2.13.1"
+  },
+  "env": {
+    "browser": true,
+    "node": true
     }
 }
