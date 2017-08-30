@@ -1,5 +1,5 @@
 {
-    "name": "calorif-api",
+    "name": "calorify-api",
     "version": "1.0.0",
     "description": "Calorify API",
     "main": "index.js",
