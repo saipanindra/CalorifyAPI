@@ -8,8 +8,8 @@ exports.addCuisine = function(args, res, next) {
    * cuisine Cuisines Cuisine object to add (optional)
    * no response value expected for this operation
    **/
-  res.end();
-}
+    res.end();
+};
 
 exports.addIngredient = function(args, res, next) {
   /**
@@ -19,8 +19,8 @@ exports.addIngredient = function(args, res, next) {
    * ingredient Ingredients Inventory item to add (optional)
    * no response value expected for this operation
    **/
-  res.end();
-}
+    res.end();
+};
 
 exports.addUser = function(args, res, next) {
   /**
@@ -30,6 +30,6 @@ exports.addUser = function(args, res, next) {
    * user Users User object to add (optional)
    * no response value expected for this operation
    **/
-  res.end();
-}
+    res.end();
+};
 
