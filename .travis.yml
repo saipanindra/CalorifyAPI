@@ -7,8 +7,8 @@ cache:
 before_script:
   - cd calorify-api
 script:
-   -  npm run lint
    -  npm install
+   -  npm run lint
 
 
 
