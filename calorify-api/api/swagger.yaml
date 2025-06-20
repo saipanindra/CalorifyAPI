@@ -216,7 +216,133 @@ paths:
         409:
           description: "an existing item already exists"
       x-swagger-router-controller: "Admins"
+  /calories:
+    get:
+      tags:
+      - "developers"
+      summary: "get calorie information for ingredients or recipes"
+      description: "Retrieve calorie and nutritional information for specific ingredients or recipes in the system."
+      operationId: "getCalories"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "ingredientId"
+        in: "query"
+        description: "UUID of ingredient to get calories for"
+        required: false
+        type: "string"
+        format: "uuid"
+      - name: "recipeId"
+        in: "query"
+        description: "UUID of recipe to get calories for"
+        required: false
+        type: "string"
+        format: "uuid"
+      - name: "servingSize"
+        in: "query"
+        description: "number of servings to calculate calories for"
+        required: false
+        type: "number"
+        minimum: 0.1
+        default: 1.0
+      - name: "skip"
+        in: "query"
+        description: "number of records to skip for pagination"
+        required: false
+        type: "integer"
+        minimum: 0
+        format: "int32"
+      - name: "limit"
+        in: "query"
+        description: "maximum number of records to return"
+        required: false
+        type: "integer"
+        maximum: 50
+        minimum: 0
+        format: "int32"
+      responses:
+        200:
+          description: "calorie information retrieved successfully"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/CalorieInfo"
+        400:
+          description: "bad input parameter"
+        404:
+          description: "ingredient or recipe not found"
+      x-swagger-router-controller: "Developers"
 definitions:
+  CalorieInfo:
+    type: "object"
+    required:
+    - "id"
+    - "name"
+    - "totalCalories"
+    - "caloriesPerServing"
+    - "servingSize"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+        example: "d290f1ee-6c54-4b01-90e6-d701748f0851"
+      name:
+        type: "string"
+        example: "Grilled Chicken Breast"
+      totalCalories:
+        type: "number"
+        format: "float"
+        example: 165.0
+        description: "Total calories in the item"
+      caloriesPerServing:
+        type: "number"
+        format: "float"
+        example: 82.5
+        description: "Calories per serving based on serving size"
+      servingSize:
+        type: "number"
+        format: "float"
+        example: 2.0
+        description: "Number of servings"
+      unit:
+        type: "string"
+        example: "grams"
+        description: "Unit of measurement"
+      nutritionalInfo:
+        $ref: "#/definitions/NutritionalInfo"
+  NutritionalInfo:
+    type: "object"
+    properties:
+      protein:
+        type: "number"
+        format: "float"
+        example: 31.0
+        description: "Protein content in grams"
+      carbohydrates:
+        type: "number"
+        format: "float"
+        example: 0.0
+        description: "Carbohydrate content in grams"
+      fat:
+        type: "number"
+        format: "float"
+        example: 3.6
+        description: "Fat content in grams"
+      fiber:
+        type: "number"
+        format: "float"
+        example: 0.0
+        description: "Fiber content in grams"
+      sugar:
+        type: "number"
+        format: "float"
+        example: 0.0
+        description: "Sugar content in grams"
+      sodium:
+        type: "number"
+        format: "float"
+        example: 74.0
+        description: "Sodium content in milligrams"
   Ingredients:
     type: "object"
     required:
